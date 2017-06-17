@@ -1,0 +1,40 @@
+data lastPlayer
+data lastBlock
+data winner
+
+def init(): 
+	self.lastPlayer = 0
+	self.lastBlock = 0
+	self.winner = 0
+
+def register(key, value):
+    if not self.storage[key]:
+        self.storage[key] = value
+        return(1)
+    else:
+        return(0)
+
+def ask(key):
+    return(self.storage[key])
+
+def pressButton(sender, receiver, fixedAmount, currentBlock):	
+	if (self.storage[sender] >= fixedAmount):
+		self.storage[sender] -= fixedAmount
+		self.storage[receiver] += fixedAmount
+		self.lastPlayer = sender
+		self.lastBlock = currentBlock
+
+def checkWinner(poolAddress, currentBlock):
+	if (currentBlock - self.lastBlock > 3):
+		self.winner = self.lastPlayer
+		self.storage[self.lastPlayer] += self.storage[poolAddress] 
+		self.storage[poolAddress] = 0 
+
+def winner(): 
+	return self.winner
+
+def lastPlayer(): 
+	return self.lastPlayer
+
+def lastBlock(): 
+	return self.lastBlock
